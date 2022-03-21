@@ -22,13 +22,12 @@ namespace rtlo_attack
             char rtlo = '\u202e';
 
 
-            if (args.Length < 2)
+            if (args.Length < 1)
             {
                 return;
             }
 
             string inputFile = args[0];
-            string iconFile = args[1];
 
             string filenameWithExtension = inputFile.Split('\\').Last();
             string extension = "." + filenameWithExtension.Split('.').Last();
@@ -37,7 +36,10 @@ namespace rtlo_attack
             string tempFilename = "temp" + extension;
 
             File.Copy(inputFile, tempFilename);
-            IconChanger.InjectIcon(tempFilename, iconFile);
+            if (args.Length == 2)
+            {
+                IconChanger.InjectIcon(tempFilename, args[1]);
+            }
 
             string fileName;
             if (filename.Contains(extension))
